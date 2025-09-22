@@ -68,3 +68,57 @@ This made our infrastructure repeatable and version-controlled in Git.”
 If I’m working outside Kubernetes, like deploying on bare-metal servers or VMs, then I use Ansible.”
 
 
+<img width="982" height="410" alt="image" src="https://github.com/user-attachments/assets/676acfef-e6e0-4e6b-8bd4-23ce771d7b2f" />
+
+
+The Ansible architecture consists of users who create playbooks (instructions) that tell Ansible (the automation tool) what to do on different hosts (computers or servers). Ansible uses modules to perform tasks, and it connects to the hosts through connection plugins (like SSH). There are plugins to add extra features, and Ansible can even work with machines in the cloud (private or public). This whole system helps you automate boring or repetitive tasks, making your job easier and faster.
+
+
+Let's discuss about the each components of Ansible Architecture:
+
+1. Users
+
+The users are system administrators, DevOps engineers, or anyone who needs to automate tasks on servers or cloud resources.
+Users interact with Ansible by writing playbooks and managing inventories. They initiate the automation tasks and decide which machines (hosts) need to be configured or managed.
+
+2. Ansible
+
+Ansible is the automation tool at the center of this architecture. It is responsible for executing tasks that automate IT operations like installing software, setting up configurations, or deploying applications.
+Ansible doesn't require an agent installed on the remote machines. It uses SSH (or other methods) to communicate directly with the hosts.
+
+3. Host Inventory
+
+This is a list of all the machines that Ansible will manage. It contains the IP addresses or hostnames of the servers, virtual machines, or cloud instances.
+When you run an automation task (like a playbook), Ansible knows which machines (hosts) to apply the task to because it checks the host inventory. You can also group hosts into categories (for example, all web servers) to target specific machines.
+
+4. Playbooks
+
+A playbook is a YAML file containing a series of tasks to be executed by Ansible. It defines the actions that Ansible will perform on the hosts defined in the inventory.
+
+5. Core Modules and Custom Modules
+
+Core Modules: These are the default modules that come with Ansible. For example, apt is used to manage packages on Debian-based systems, and service is used to start/stop services.
+
+Custom Modules: Sometimes, Ansible's built-in modules might not be enough. You can create custom modules to meet specific needs. For example, if you have a unique application or environment, you can write your own module to automate its management.
+
+6. Plugins (Email, Logging, Other)
+These are additional modules that can extend Ansible’s functionality. Plugins might include email notifications, logging, or others to customize or enhance the automation process.
+
+7. Connection Plugins
+
+Connection plugins handle how Ansible connects to the remote machines (hosts).
+The most common connection method is SSH (for Linux machines). This means Ansible will use SSH to remotely execute commands on the hosts.
+For Windows, Ansible uses WinRM (Windows Remote Management) as a connection plugin.
+
+8. Private/Public Cloud
+
+This indicates that Ansible can interact with both private and public cloud environments to automate the deployment and management of cloud-based infrastructure.
+Private Cloud: Your internal cloud infrastructure (such as OpenStack or VMware).
+
+Public Cloud: Cloud platforms like Amazon AWS, Microsoft Azure, or Google Cloud
+
+9. Hosts (Host 1, Host 2, Host 3... Host N)
+
+Hosts are the machines (servers, virtual machines, or containers) that Ansible manages.
+They can be part of your private or public cloud infrastructure or even physical machines.
+You can define a group of hosts (like all web servers or all database servers) and then run tasks on all of them at once.
