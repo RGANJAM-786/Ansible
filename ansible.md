@@ -118,6 +118,65 @@ Private Cloud: Your internal cloud infrastructure (such as OpenStack or VMware).
 Public Cloud: Cloud platforms like Amazon AWS, Microsoft Azure, or Google Cloud
 
 
+# 🔹 What does “Push-based architecture” mean in Ansible?
+
+In Ansible, the control node (where you run Ansible) pushes the configurations to the target servers (called managed nodes).
+
+It uses SSH (or API) to directly connect and apply the changes.
+
+The servers themselves don’t run any Ansible agent — they just receive instructions and execute them.
+
+👉 Example: You run ansible-playbook install_docker.yml → Ansible connects to your servers via SSH → Installs Docker.
+
+
+🔹 How is this different from other tools?
+
+
+Pull-based (like Puppet, Chef, SaltStack in master-agent mode):
+
+These tools usually run a small agent on each server.
+
+The agent pulls configurations from a central server (master) at regular intervals (every 15 or 30 mins).
+
+This means changes are not instant, they depend on when the agent checks in.
+
+
+Push-based (Ansible):
+
+No agent is required on the servers.
+
+Changes happen immediately when you run the Playbook.
+
+More control: You decide when and where to apply changes.
+
+
+🔹 Interview-style Example Answer
+
+“Ansible uses a push-based architecture, meaning the control node connects over SSH and pushes configurations directly to the target servers. This is different from tools like Puppet or Chef, which use a pull model where agents on servers fetch configs from a master at intervals.
+
+For us, push-based was very useful in scenarios where we wanted immediate changes — for example, patching security updates across all servers or onboarding a new Kubernetes worker node. It gave us full control and faster results compared to waiting for an agent to sync.”
+
+
+✅ Sample Easy-to-Understand Answer:
+
+“In Puppet, the servers run an agent and pull configurations from the master every 15–30 minutes. This means if I need to urgently apply a security patch or deploy a critical change, I have to wait for the agent’s next run.
+
+With Ansible, it’s push-based — as soon as I run the playbook, the configuration is applied instantly across all servers.
+
+Another big advantage is no agent required. With Puppet, I need to maintain agents on all servers, which adds overhead in upgrades and troubleshooting agent issues. Ansible just needs SSH access, so it’s lightweight and easier to maintain.
+
+In our project, we chose Ansible because:
+
+We wanted immediate control over deployments and patches.
+
+It’s agentless, so less overhead.
+
+It integrates well with Kubernetes and CI/CD pipelines.
+
+So if the business needs fast, reliable, and simple configuration management, Ansible is the better choice compared to Puppet’s pull-based model.”
+
+
+
 🔹 Scenario 1:
 
 Q: You already have Jenkins for CI/CD, why did you still use Ansible in your project?
