@@ -56,3 +56,51 @@ IQ] what is the difference between tasks and handlers?
 
 
 --> Handlers will execute at end of the play.
+
+
+<img width="753" height="762" alt="image" src="https://github.com/user-attachments/assets/bbb066dc-e497-4ec8-ae0a-07c1f806c9a3" />
+
+
+
+# ✅ Did you use handlers in your project?
+
+
+👉 Yes, I used handlers in my project mainly for service restarts.
+
+For example:
+
+When I updated a configuration file (like nginx.conf or httpd.conf), I didn’t want the service to restart every time the playbook ran.
+
+So, I used a handler, which is only triggered when the configuration file is actually changed.
+
+Example: If template module updates nginx.conf, it notifies the handler → the handler runs → service restarts only if needed.
+
+This avoided unnecessary restarts and helped in keeping deployments smooth.
+
+
+# ✅ What is the difference between Task and Handler?
+
+
+Task:
+
+Runs every time the playbook is executed.
+Example: Installing nginx or copying a file.
+
+Handler:
+
+Runs only when notified by a task (and only once, even if multiple tasks notify it).
+Example: Restarting a service after a config change.
+
+
+🔹 Interview-style Statement
+
+👉 “In my projects, I used handlers to restart services only when configuration files were updated. The main difference is that tasks always run when called, while handlers only run when triggered. This makes handlers very useful for efficient service management.”
+
+
+<img width="953" height="670" alt="image" src="https://github.com/user-attachments/assets/476e08c0-cae8-4aa9-bd5b-2e08949ee9b3" />
+
+
+<img width="962" height="613" alt="image" src="https://github.com/user-attachments/assets/726728df-da13-4ce1-bf31-a5b57c4113b1" />
+
+
+
